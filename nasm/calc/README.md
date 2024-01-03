@@ -1,0 +1,3 @@
+# Calc
+
+Currently, it only performs the four basic arithmetic operations. The inputs have a limit, with the maximum being 9999, and it only accepts natural numbers ($\mathbb{N}$), meaning only positive integers including zero. Soon, I will include factorial operations with $\mathbb{N}$, in addition to expanding the basic operations to integers ($\mathbb{Z}$), including both positive and negative integers, and later to rational numbers ($\mathbb{Q}$), which involve positive and negative decimal fractions. Subsequently, I will also introduce the following operations: square root and exponentiation, exponential and logarithmic functions, and of course, modulo operations.
