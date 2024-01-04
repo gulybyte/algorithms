@@ -6,3 +6,7 @@ To execute this code, it is necessary to run it on a Linux distribution and have
 ```sh
 make
 ```
+
+### Resume
+
+![cover calc nasm](/calc/nasm/static/cover.png)
