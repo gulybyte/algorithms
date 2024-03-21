@@ -5,8 +5,8 @@ A divide-and-conquer algorithm recursively breaks down a problem into two or mor
 
 ![Binary Search GIF](binary-search.gif)
 
-### Big-O Complexity for Binary Search
-$$\text{Time Complexity:} \\ \Omega(1) \\ \Theta(log\text{ }n) \\ O(log\text{ }n)\\ \text{} \\ \text{Space Complexity:} \\ O(1) $$
+# Big-O Complexity for Binary Search
+## $$\text{Time Complexity:}$$ $$\Omega(1)$$ $$\Theta(log\text{ }n)$$ $$O(log\text{ }n)$$ $$\text {Space Complexity:}$$ $$O(1) $$
 
 
 <h6>find more information <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank">here</a>.</h6>
