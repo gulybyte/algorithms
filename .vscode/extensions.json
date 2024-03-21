@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "formulahendry.code-runner",
+        "ms-vscode.cpptools-extension-pack",
+        "basdp.language-gas-x86",
+        "visualstudioexptteam.vscodeintellicode",
+        "johnpapa.vscode-peacock"
+    ]
+}
