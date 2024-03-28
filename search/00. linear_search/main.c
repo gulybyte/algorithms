@@ -4,50 +4,41 @@
 
 #define MAX_LENGTH 20
 
-char* binarySearch(int list[], int low, int high, int value);
-void testBinarySearch();
+char* linearSearch(int list[], int listSize, int value);
+void testLinearSearch();
 char* intToString(int number);
-void metadataBinarySearch(int list[], int listSize, int val, char* response);
+void metadataLinearSearch(int list[], int listSize, int val, char* response);
 
 int main() {
 
-    testBinarySearch();
+    testLinearSearch();
 
     return 0;
 
 }
 
-char* binarySearch(int list[], int low, int high, int value) {
+char* linearSearch(int list[], int listSize, int value) {
 
-    int middle, try;
-
-    while (low <= high) {
-        middle = (low + high) / 2;
-        try = list[middle];
-
-        if(try == value)
-            return intToString(middle);
-        else if (try > value)
-            high = middle - 1;
-        else
-            low = middle + 1;
+    int i;
+    for(i = 0; i < listSize; i++) {
+        if(list[i] == value) {
+            return intToString(i);
+        }
     }
-
 
     return "NOT FOUND";
 }
 
-void testBinarySearch() {
-    int list[] = {-80, -42, 0, 2, 3, 5, 7, 11, 41, 57, 70}; // it's necessary to be orderly TODO: What if the list is empty?
+void testLinearSearch() {
+    int list[] = {11, 7, 41, 3, 2, -80, 5, 0, 70, -42, 57};
     int listSize = sizeof(list) / sizeof(list[0]);
-    int low = 0;
 
     int values[] = {7, 42, 80, 1, 0, 70, -1, -42, -80, -81}; // numbers to test
     int numValues = sizeof(values) / sizeof(values[0]);
 
     for (int i = 0; i < numValues; i++) {
-        char* result = binarySearch(list, low, listSize - 1, values[i]);
-        metadataBinarySearch(list, listSize, values[i], result);
+        char* result = linearSearch(list, listSize, values[i]);
+        metadataLinearSearch(list, listSize, values[i], result);
     }
 }
 
@@ -65,7 +56,7 @@ char* intToString(int number) {
 }
 
 
-void metadataBinarySearch(int list[], int listSize, int val, char* response) {
+void metadataLinearSearch(int list[], int listSize, int val, char* response) {
     printf("\n__________________________________________________________\nThe elements of the array are: ");
     for (int i = 0; i < listSize; i++)
         printf("%d ", list[i]);
