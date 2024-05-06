@@ -4,7 +4,8 @@
 > 🚧  In construction...  🚧
 
 
-- [Linear Search](/search/00.%20linear_search)
+- [Linear Search](/search/01.%20linear_search)
+    - [Sentinel Linear Search](/search/01.%20linear_search/01.1.%20sentinel_linear_search)
 - [Binary Search](/search/02.%20binary_search)
 
 ### The basic
