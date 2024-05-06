@@ -4,7 +4,7 @@
 
 #define MAX_LENGTH 20
 
-char* binarySearch(int list[], int low, int high, int value);
+char* binarySearch(int list[], int listSize, int value);
 void testBinarySearch();
 char* intToString(int number);
 void metadataBinarySearch(int list[], int listSize, int val, char* response);
@@ -17,8 +17,10 @@ int main() {
 
 }
 
-char* binarySearch(int list[], int low, int high, int value) {
+char* binarySearch(int list[], int listSize, int value) {
 
+    int low = 0;
+    int high = listSize - 1;
     int mid, try;
 
     while (low <= high) {
@@ -38,15 +40,14 @@ char* binarySearch(int list[], int low, int high, int value) {
 }
 
 void testBinarySearch() {
-    int list[] = {-80, -42, 0, 2, 3, 5, 7, 11, 41, 57, 70}; // it's necessary to be orderly TODO: What if the list is empty?
+    int list[] = {-80, -42, 0, 2, 3, 5, 7, 11, 41, 57, 70}; // it's necessary to be orderly
     int listSize = sizeof(list) / sizeof(list[0]);
-    int low = 0;
 
     int values[] = {7, 42, 80, 1, 0, 70, -1, -42, -80, -81}; // numbers to test
     int numValues = sizeof(values) / sizeof(values[0]);
 
     for (int i = 0; i < numValues; i++) {
-        char* result = binarySearch(list, low, listSize - 1, values[i]);
+        char* result = binarySearch(list, listSize, values[i]);
         metadataBinarySearch(list, listSize, values[i], result);
     }
 }
