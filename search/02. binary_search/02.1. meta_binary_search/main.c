@@ -4,41 +4,48 @@
 
 #define MAX_LENGTH 20
 
-char* linearSearch(int list[], int listSize, int value);
-void testLinearSearch();
+char* binarySearch(int list[], int listSize, int value);
+void testBinarySearch();
 char* intToString(int number);
-void metadataLinearSearch(int list[], int listSize, int val, char* response);
+void metadataBinarySearch(int list[], int listSize, int val, char* response);
 
 int main() {
 
-    testLinearSearch();
+    testBinarySearch();
 
     return 0;
 
 }
 
-char* linearSearch(int list[], int listSize, int value) {
+char* binarySearch(int list[], int listSize, int value) {
 
-    int i;
-    for(i = 0; i < listSize; i++) {
-        if(list[i] == value) {
-            return intToString(i);
-        }
+    int lg = 0;
+    while((1 << lg) < listSize - 1)
+        lg += 1;
+
+    int pos = 0;
+    for(int i = lg - 1; i >= 0; i--) {
+        if(list[pos] == value)
+            return intToString(pos);
+        int new_pos = pos | (1 << i);
+        if((new_pos < listSize) && (list[new_pos] <= value))
+            pos = new_pos;
     }
 
-    return "NOT FOUND";
+    return ((list[pos] == value) ? intToString(pos) : "NOT FOUND");
+
 }
 
-void testLinearSearch() {
-    int list[] = {11, 7, 41, 3, 5, -80, 2, 0, 70, -42, 57};
+void testBinarySearch() {
+    int list[] = {-80, -42, 0, 2, 3, 5, 7, 11, 41, 57, 70}; // it's necessary to be orderly
     int listSize = sizeof(list) / sizeof(list[0]);
 
     int values[] = {7, 42, 80, 1, 0, 70, -1, -42, -80, -81}; // numbers to test
     int numValues = sizeof(values) / sizeof(values[0]);
 
     for (int i = 0; i < numValues; i++) {
-        char* result = linearSearch(list, listSize, values[i]);
-        metadataLinearSearch(list, listSize, values[i], result);
+        char* result = binarySearch(list, listSize, values[i]);
+        metadataBinarySearch(list, listSize, values[i], result);
     }
 }
 
@@ -56,7 +63,7 @@ char* intToString(int number) {
 }
 
 
-void metadataLinearSearch(int list[], int listSize, int val, char* response) {
+void metadataBinarySearch(int list[], int listSize, int val, char* response) {
     printf("\n__________________________________________________________\nThe elements of the array are: ");
     for (int i = 0; i < listSize; i++)
         printf("%d ", list[i]);
