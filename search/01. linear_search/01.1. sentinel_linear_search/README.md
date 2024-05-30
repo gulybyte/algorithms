@@ -5,9 +5,21 @@ The Sentinel Linear Search algorithm is an optimized variation of the convention
 # The Algorithm
 > Flowchart (pseudocode):
 
-![Sentinel linear search algorithm](sentinel_linear_search_flowchart.png)
+<p align="center">
+  
+<img alt="Sentinel Linear Search Algorithm" align="center" width="60%" src="sentinel_linear_search_flowchart.png" />
 
-<h6>Disclaimer: The visualization of a sentinel linear search compared to a regular linear search changes very little, even though the logic between the algorithms differs significantly. In an animated visualization, both algorithms appear almost identical, with only the value of the last index being different. For this reason, I will not adhere to the pattern to insert animations that is in my READMEs.</h6>
+</p>
+
+> Animation:
+
+<p align="center">
+  
+<img alt="Sentinel Linear Search GIF" align="center" width="60%" src="sentinel-linear-search.gif" />
+
+</p>
+
+<h6>Note: If the difference between Sentinel Linear Search and Linear Search is not clear, it is because both have a comparison (if-else) and a loop (for-while). However, if you look at the diagram I left in both (pseudocode), you will notice that the comparison in Linear Search is inside the loop, which means that there is a comparison in each iteration. In contrast, in Sentinel Linear Search, the comparison is outside the loop, so there is only one comparison.</h6>
 
 # Big-O Complexity for Binary Search
 ## $$\text{Time Complexity:}$$ $$\Omega(1)$$ $$\Theta(n)$$ $$O(n)$$ $$\text {Space Complexity:}$$ $$O(1) $$

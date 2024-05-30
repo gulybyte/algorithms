@@ -6,11 +6,19 @@ A divide-and-conquer algorithm recursively breaks down a problem into two or mor
 # The Algorithm
 > Flowchart (pseudocode):
 
-![Binary search algorithm](binary_search_flowchart.png)
+<p align="center">
+  
+<img alt="Binary search algorithm" align="center" width="60%" src="binary_search_flowchart.png" />
+
+</p>
 
 > Animation:
 
-![Binary Search GIF](binary-search.gif)
+<p align="center">
+  
+<img alt="Binary Search GIF" align="center" width="95%" src="binary-search.gif" />
+
+</p>
 
 # Big-O Complexity for Binary Search
 ## $$\text{Time Complexity:}$$ $$\Omega(1)$$ $$\Theta(log\text{ }n)$$ $$O(log\text{ }n)$$ $$\text {Space Complexity:}$$ $$O(1) $$

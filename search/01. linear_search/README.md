@@ -6,11 +6,19 @@ Sequentially checks each element of the list until a match is found or the whole
 # The Algorithm
 > Flowchart (pseudocode):
 
-![Linear search algorithm](linear_search_flowchart.png)
+<p align="center">
+  
+<img alt="Linear search algorithm" align="center" width="85%" src="linear_search_flowchart.png" />
+
+</p>
 
 > Animation:
 
-![Linear Search GIF](linear-search.gif)
+<p align="center">
+  
+<img alt="Linear Search GIF" align="center" width="70%" src="linear-search.gif" />
+
+</p>
 
 # Big-O Complexity for Binary Search
 ## $$\text{Time Complexity:}$$ $$\Omega(1)$$ $$\Theta(n)$$ $$O(n)$$ $$\text {Space Complexity:}$$ $$O(1) $$
