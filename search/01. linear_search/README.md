@@ -8,7 +8,7 @@ Sequentially checks each element of the list until a match is found or the whole
 
 <p align="center">
   
-<img alt="Linear search algorithm" align="center" width="85%" src="linear_search_flowchart.png" />
+<img alt="Linear search algorithm" align="center" width="65%" src="linear_search_flowchart.png" />
 
 </p>
 
