@@ -6,6 +6,7 @@
 
 char* binarySearch(int list[], int listSize, int value);
 void testBinarySearch();
+int log2_floor(int a);
 char* intToString(int number);
 void metadataBinarySearch(int list[], int listSize, int val, char* response);
 
@@ -19,9 +20,7 @@ int main() {
 
 char* binarySearch(int list[], int listSize, int value) {
 
-    int lg = 0;
-    while((1 << lg) < listSize - 1)
-        lg += 1;
+    int lg = log2_floor(listSize - 1) + 1;
 
     int pos = 0;
     for(int i = lg - 1; i >= 0; i--) {
@@ -51,6 +50,15 @@ void testBinarySearch() {
 
 
 /* UTILS */
+
+int log2_floor(int a) {
+    int lg = -1;
+    while (a > 0) {
+        a >>= 1;
+        lg++;
+    }
+    return lg;
+}
 
 char* intToString(int number) {
     char* str = malloc(sizeof(char) * MAX_LENGTH);
