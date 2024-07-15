@@ -18,4 +18,5 @@ void main() {
 
     printf("\nValue of indice 0: %d", arrMutable[0]);
 
+
 }

@@ -38,7 +38,7 @@ public class Main {
         numbersList.add(5);
         numbersList.add(7);
         System.out.println(numbersList+__+numbersList.size());
-        
+
         numbersList.add(11);// no error (auto resize)
         System.out.println(numbersList+__+numbersList.size());
 

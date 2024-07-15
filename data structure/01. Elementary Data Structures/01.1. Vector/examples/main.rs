@@ -9,7 +9,7 @@ fn main() {
 }
 
 fn imutable_vector() {
-    
+
     /* Array: An imutable vector */
 
     let array: [i32; 7] = [1, 1, 2, 3, 5, 8, 13];
@@ -17,7 +17,7 @@ fn imutable_vector() {
     println!("Value of indice 0: {}", array[0]);
 
     /* Impossible operation, because is imutable */
-    // array[0] = 42;
+    //array[0] = 42;
 
 }
 
