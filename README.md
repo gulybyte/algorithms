@@ -30,3 +30,5 @@ For math:
 
 ### Configurations
 [NASM](config/NASM.md)
+
+<!-- código: para algoritmos em geral a linguagem para Lua exemplos simples porém a versão final sempre em C, para estruturas de dados (exceto array mutavel e imutavel por serem primitivas) sempre C++-->
