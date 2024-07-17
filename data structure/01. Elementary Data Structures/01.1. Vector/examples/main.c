@@ -3,20 +3,16 @@
 
 void main() {
 
-    const int arrImutable[] = {42, 7, 33, 81};
+    int dynamicMutableVector[] = {42, 7, 33, 81};
 
-    printf("\nValue of indice 0: %d", arrImutable[0]);
+    printf("\nValue of indice 0: %d", dynamicMutableVector[0]);
 
-    /* Impossible operation */
-    // arrImutable[0] = 32;
+    dynamicMutableVector[0] = 35;
+    dynamicMutableVector[4] = 27;
+    dynamicMutableVector[42] = 402;
 
-    int arrMutable[] = {42, 7, 33, 81};
-
-    printf("\nValue of indice 0: %d", arrMutable[0]);
-
-    arrMutable[0] = 35;
-
-    printf("\nValue of indice 0: %d", arrMutable[0]);
-
+    printf("\nValue of indice 0: %d", dynamicMutableVector[0]);
+    printf("\nValue of indice 4: %d", dynamicMutableVector[4]);
+    printf("\nValue of indice 42: %d", dynamicMutableVector[42]);
 
 }

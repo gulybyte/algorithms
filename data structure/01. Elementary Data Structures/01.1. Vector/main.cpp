@@ -1,28 +1,51 @@
 #include <iostream>
 
-using namespace std;
+class DynamicArray {
+private:
+    int* data;
+    int size;
 
-extern "C" int* StaticImmutableVector();
-extern "C" int GeneratedStars(long num);
-
-int main() {
-
-    int* vector = StaticImmutableVector();
-    int i = 0;
-    cout << "vector: ";
-
-    while (true) {
-        if(vector[i] == -1) {
-            cout << endl;
-            cout << "size: " << i;
-            cout << endl;
-            break;
-        }
-        cout << vector[i] << " ";
-        i++;
+public:
+    DynamicArray(int size) : size(size) {
+        data = new int[size];
     }
 
+    ~DynamicArray() {
+        delete[] data;
+    }
 
-  return 0;
+    void set(int index, int value) {
+        if (index >= 0 && index < size) {
+            data[index] = value;
+        } else {
+            std::cerr << "Index out of bounds" << std::endl;
+        }
+    }
 
+    int get(int index) {
+        if (index >= 0 && index < size) {
+            return data[index];
+        } else {
+            std::cerr << "Index out of bounds" << std::endl;
+            return -1; // Valor de erro
+        }
+    }
+
+    int getSize() {
+        return size;
+    }
+};
+
+int main() {
+    DynamicArray arr(10);
+
+    for (int i = 0; i < arr.getSize(); ++i) {
+        arr.set(i, i * 2);
+    }
+
+    for (int i = 0; i < arr.getSize(); ++i) {
+        std::cout << "Value at index " << i << ": " << arr.get(i) << std::endl;
+    }
+
+    return 0;
 }
