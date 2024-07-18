@@ -52,35 +52,89 @@ Partindo agora dessa mesma definição, veremos como cada tipo de vetor implemen
  1. **Vetor estático, que chamamos de array**: nele não é possível aumentar o tamanho após a criação;
  2. **Vetor dinâmico, que chamamos de lista**: nele é possível aumentar o tamanho após a criação.
 
-Agora, vamos definir mais formalmente os dois tipos de Vetor.
+Antes de definir os dois tipos de vetores e como eles se comportam em memória, vamos precisar duas notações de para abstrair o conceito de locação de memória.
 
-### Notação de Alocação de Memória: LOC e CONTENT
+### Notações de Alocação de Memória: LOC e CONTENT
 
-Para abstrair a locação de memória no computador, será ultilizado a mesma notação de Donald Knuth em The Art of Computer Programming. Com ela podemos representar melhor conteúdos e endereços de memória de forma concisa.
+Para abstrair a alocação de memória no computador, utilizaremos a notação de Donald Knuth em _The Art of Computer Programming_. Essa notação nos permite representar conteúdos e endereços de memória de forma simplificada e clara.
 
-Considere os seguintes valores com seus repectivos endeços de onde se encontram na memória:
+Com as notações LOC e CONTENT, podemos encontrar valores a partir de endereços e vice-versa.
 
-![](examples/memory.png)
+CONTENT é uma função que recebe um endereço de memória e retorna o conteúdo armazenado nesse endereço. Por outro lado, LOC é uma função que recebe um conteúdo e retorna o endereço de memória onde esse conteúdo está localizado.
+
+Como exemplo, considere os seguintes valores com seus respectivos endereços na memória:
+
+![](examples/images/memory.png)
 
 | Endereço na Memória | Valor/Conteúdo |
 | - | - |
 | 0x3E8 | 5 |
-| 0x3DA | Object |
+| 0x3DA | Object {"id": 2, "name": "Bob"} |
 | 1x4F9 | "hello" |
 
-Com as notações LOC e CONTENT, podemos ...
+Com as notações LOC e CONTENT, temos que:
 
+#### $$\text{CONTENT}(\text{0x3da})=\text{\{"id": 2, "name": "Bob"\}}$$
 
+#### $$\text{CONTENT}(\text{1x4f9})=\text{"hello"}$$
 
+#### $$\text{LOC}(\text{"hello"})=\text{1x4f9}$$
 
+<h6>(podemos inferir facilmente que):</h6>
+
+#### $$\text{CONTENT}(\text{LOC}(\text{"hello"}))=\text{"hello"}$$
 
 ### Vetor Estatico: ARRAY.
 
-Um vetor estatico é aquele que é alocado de maneira sequencial na memória, ou seja, quando ele respeita a seguinte equação:
+Um vetor estatico (que vamos chamar apenas de array daqui em diante) é aquele que é estático na memória, de forma que não podemos alterar seu tamanho após sua inicialização.
+
+O array é alocado de maneira sequencial na memória, formalmente quando ele respeita a seguinte equação:
 
 #### $$\text{LOC}(V[i+1])=\text{LOC}(V[i])+c$$
 
-Onde $c$ é o tamanho em memória do tipo do array
+Onde $c$ é o quanto de memória ocupa o tipo $T$ do conteúdo $x$ do array $V$.
+
+Como ponto de partida, vamos usar o mesmo [exemplo](#exemplo) usado, porém aqui vamos definir que o tipo de $x$ é um inteiro de 32 bits, ou seja, $c=32$ que em hexadecimal é 0x0004.
+
+diagrama aqui
+
+| indices $i$ | elements $x$ | tamnho do array $c$ | memory address |
+| - | - | - | - |
+| 0 | -37 | 0x0004 | 0x1000 |
+| 1 | -2 | 0x0004 | 0x1004 |
+| 2 | 0 | 0x0004 | 0x1008 |
+| 4 | 3 | 0x0004 | 0x100C |
+| 5 | 9 | 0x0004 | 0x1010 |
+| 6 | 94 | 0x0004 | 0x1014 |
+
+Assim, provamos a sequencialidade na memória da seguinte forma (usando $i=4$):
+
+#### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1010}} = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x100C}}+\text{0x0004}$$
+
+Como $\text{0x100C}+\text{0x0004}=\text{0x1010}$, isso implica que o array está armazenado de forma sequencial! Caso não estivesse armazenado dessa mesma forma (sequencial), a equação não funcionaria.
+
+diagrama aqui
+
+| indices $i$ | elements $x$ | tamnho do array $c$ | memory address |
+| - | - | - | - |
+| 0 | -37 | 0x0004 | 0x1000 |
+| 1 | -2 | 0x0004 | 0x1004 |
+| 2 | 0 | 0x0004 | 0x1014 |
+| 4 | 3 | 0x0004 | 0x101C |
+| 5 | 9 | 0x0004 | 0x1028 |
+| 6 | 94 | 0x0004 | 0x1034 |
+
+#### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1028}} \not = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x101C}}+\text{0x0004}$$
+
+Como $\text{0x101C}+\text{0x0004}\not =\text{0x1028}$, isso implica que o array **não está** armazenado de forma sequencial! 
+
+### Vetor Dinamico: LISTA.
+
+
+
+
+
+
 
 
 ### Estruturas Associadas
