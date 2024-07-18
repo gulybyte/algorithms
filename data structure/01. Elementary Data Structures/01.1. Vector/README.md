@@ -10,15 +10,15 @@ A vector is a data structure consisting of a collection of elements (values or v
 
 Um vetor unidimensional $V$ pode ser definido como uma relação, onde o vetor $V$ é a aplicação dos indices $i$ de $S$ para os valores $x$ de um [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type) $T$ na forma:
 
-#### $$V: S\rightarrow T\Leftrightarrow(i\in S,\exists !x\in T\text{ | }(i,x)\in V)$$
+### $$V: S\rightarrow T\Leftrightarrow(i\in S,\exists !x\in T\text{ | }(i,x)\in V)$$
 
 de forma simplicada:
 
-#### $$V=\{(i,x)\text{ | }i\in S, x\in T\text{ and }x=V[i]\}$$
+### $$V=\{(i,x)\text{ | }i\in S, x\in T\text{ and }x=V[i]\}$$
 
 onde $T$ é um [ADT](https://en.wikipedia.org/wiki/Abstract_data_type) para representar os valores $x$ contidos no vetor $V$, que são identificados por um indice $i$ (ou seja, $x=V[i]$). Esse indice $i$ pertence a uma sequência $S$ dos naturais incluindo o 0, $\mathbb{N}_0$. Ou seja:
 
-#### $$V:\{0,1,2,\dots,n-1\}\rightarrow T$$
+### $$V:\{0,1,2,\dots,n-1\}\rightarrow T$$
 
 Esta notação deixa claro que cada índice $i$ tem um único valor associado $x$, e isso é expresso pela unicidade da existência de $x$ para cada $i$.
 
@@ -26,11 +26,11 @@ Esta notação deixa claro que cada índice $i$ tem um único valor associado $x
 
 Vamos dizer que nossos elementos $x$ serão um conjunto $E$ de alguns números inteiros (ou seja, $x\in E | E\subset\mathbb{Z}\subset T$), como exemplo $E=\{-37,-2,0,3,9,94\}$, de acordo com a definição temos:
 
-#### $$V:\{0,1,2,\dots,n-1\}\rightarrow \{-37,-2,0,3,9,94\}$$
+### $$V:\{0,1,2,\dots,n-1\}\rightarrow \{-37,-2,0,3,9,94\}$$
 
 Sendo então $(i\in \{0,1,2,\dots,n-1\},\exists !x\in \{-37,-2,0,3,9,94\}\text{ | }(i,x)\in V)$ temos que:
 
-#### $$V=\{(0,-37)\text{; }(1,-2)\text{; }(2,0)\text{; }(3,3)\text{; }(4,9)\text{; }(5,94)\}$$
+### $$V=\{(0,-37)\text{; }(1,-2)\text{; }(2,0)\text{; }(3,3)\text{; }(4,9)\text{; }(5,94)\}$$
 
 Então se sabemos que $x=V[i]$ nessa relação, sabemos que:
  - $V[0]=-37$
@@ -74,15 +74,15 @@ Como exemplo, considere os seguintes valores com seus respectivos endereços na 
 
 Com as notações LOC e CONTENT, temos que:
 
-#### $$\text{CONTENT}(\text{0x3da})=\text{\{"id": 2, "name": "Bob"\}}$$
+### $$\text{CONTENT}(\text{0x3da})=\text{\{"id": 2, "name": "Bob"\}}$$
 
-#### $$\text{CONTENT}(\text{1x4f9})=\text{"hello"}$$
+### $$\text{CONTENT}(\text{1x4f9})=\text{"hello"}$$
 
-#### $$\text{LOC}(\text{"hello"})=\text{1x4f9}$$
+### $$\text{LOC}(\text{"hello"})=\text{1x4f9}$$
 
 <h6>(podemos inferir facilmente que):</h6>
 
-#### $$\text{CONTENT}(\text{LOC}(\text{"hello"}))=\text{"hello"}$$
+### $$\text{CONTENT}(\text{LOC}(\text{"hello"}))=\text{"hello"}$$
 
 ### Vetor Estatico: ARRAY.
 
@@ -90,7 +90,7 @@ Um vetor estatico (que vamos chamar apenas de array daqui em diante) é aquele q
 
 O array é alocado de maneira sequencial na memória, formalmente quando ele respeita a seguinte equação:
 
-#### $$\text{LOC}(V[i+1])=\text{LOC}(V[i])+c$$
+### $$\text{LOC}(V[i+1])=\text{LOC}(V[i])+c$$
 
 Onde $c$ é o quanto de memória ocupa o tipo $T$ do conteúdo $x$ do array $V$.
 
@@ -109,7 +109,7 @@ diagrama aqui
 
 Assim, provamos a sequencialidade na memória da seguinte forma (usando $i=4$):
 
-#### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1010}} = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x100C}}+\text{0x0004}$$
+### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1010}} = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x100C}}+\text{0x0004}$$
 
 Como $\text{0x100C}+\text{0x0004}=\text{0x1010}$, isso implica que o array está armazenado de forma sequencial! Caso não estivesse armazenado dessa mesma forma (sequencial), a equação não funcionaria.
 
@@ -124,11 +124,13 @@ diagrama aqui
 | 5 | 9 | 0x0004 | 0x1028 |
 | 6 | 94 | 0x0004 | 0x1034 |
 
-#### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1028}} \not = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x101C}}+\text{0x0004}$$
+### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1028}} \not = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x101C}}+\text{0x0004}$$
 
 Como $\text{0x101C}+\text{0x0004}\not =\text{0x1028}$, isso implica que o array **não está** armazenado de forma sequencial! 
 
 ### Vetor Dinamico: LISTA.
+
+Um vetor dinamico (que vamos chamar apenas de lista daqui em diante) é aquele que é dinamico na memória, de forma que podemos alterar seu tamanho após sua inicialização.
 
 
 

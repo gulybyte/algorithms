@@ -1,4 +1,6 @@
-# Examples and Types of Vectors in Different Programming Languages
+https://www.youtube.com/watch?v=_KSKH8C9Gf0
+
+<!-- # Examples and Types of Vectors in Different Programming Languages
 
 #### C/C++
 
@@ -124,3 +126,4 @@ numbersList.addAll(Arrays.asList(
 System.out.println(numbersList+__+numbersList.size());
 ```
 > Out:<br>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29] ; size: 10<br>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47] ; size: 15
+ -->
