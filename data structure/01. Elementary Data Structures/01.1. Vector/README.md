@@ -22,7 +22,7 @@ onde $T$ é um [ADT](https://en.wikipedia.org/wiki/Abstract_data_type) para repr
 
 Esta notação deixa claro que cada índice $i$ tem um único valor associado $x$, e isso é expresso pela unicidade da existência de $x$ para cada $i$.
 
-#### Exemplo:
+#### Exemplo: TODO: mudar esse exemplo e todos os outros para não estarem ordenados e terem pelo menos um elemento duplicado
 
 Vamos dizer que nossos elementos $x$ serão um conjunto $E$ de alguns números inteiros (ou seja, $x\in E | E\subset\mathbb{Z}\subset T$), como exemplo $E=\{-37,-2,0,3,9,94\}$, de acordo com a definição temos:
 
@@ -40,7 +40,7 @@ Então se sabemos que $x=V[i]$ nessa relação, sabemos que:
  - $V[4]=9$
  - $V[5]=94$
 
-Essa é a definição geral, qualquer tipo de vetor unidimensional se comporta da forma apresentada, a diferença é como cada vetor implementa isso na memória do computador.
+Essa é a definição geral, qualquer tipo de vetor unidimensional se comporta da forma apresentada. A diferença é como cada vetor implementa isso na memória do computador.
 
 Partindo agora dessa mesma definição, veremos como cada tipo de vetor implementa essa definição na memória.
 
@@ -86,15 +86,15 @@ Com as notações LOC e CONTENT, temos que:
 
 ### Vetor Estatico: ARRAY.
 
-Um vetor estatico (que vamos chamar apenas de array daqui em diante) é aquele que é estático na memória, de forma que não podemos alterar seu tamanho após sua inicialização.
+Um vetor estatico (que vamos chamar apenas de array daqui em diante) é aquele que é estático na memória, ou seja, é de tamanho fixo, de forma que não podemos alterar seu tamanho após sua inicialização.
 
-O array é alocado de maneira sequencial na memória, formalmente quando ele respeita a seguinte equação:
+Além de tamanho fixo, o array é alocado de maneira sequencial na memória, ou seja, em pedaços contiguos sem buracos. Formalmente quando ele respeita a seguinte equação:
 
 ### $$\text{LOC}(V[i+1])=\text{LOC}(V[i])+c$$
 
 Onde $c$ é o quanto de memória ocupa o tipo $T$ do conteúdo $x$ do array $V$.
 
-Como ponto de partida, vamos usar o mesmo [exemplo](#exemplo) usado, porém aqui vamos definir que o tipo de $x$ é um inteiro de 32 bits, ou seja, $c=32$ que em hexadecimal é 0x0004.
+Como ponto de partida, vamos usar o mesmo [exemplo](#exemplo) usado, porém aqui vamos definir que o tipo de $x$ é um inteiro de 32 bits, ou seja, $c=32$ que em hexadecimal é `0x0004`.
 
 diagrama aqui
 
@@ -111,7 +111,7 @@ Assim, provamos a sequencialidade na memória da seguinte forma (usando $i=4$):
 
 ### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1010}} = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x100C}}+\text{0x0004}$$
 
-Como $\text{0x100C}+\text{0x0004}=\text{0x1010}$, isso implica que o array está armazenado de forma sequencial! Caso não estivesse armazenado dessa mesma forma (sequencial), a equação não funcionaria.
+Como `0x100C` $+$ `0x0004` $=$ `0x1010`, isso implica que o array está armazenado de forma sequencial! Caso não estivesse armazenado dessa mesma forma (sequencial), a equação não funcionaria.
 
 diagrama aqui
 
@@ -126,18 +126,63 @@ diagrama aqui
 
 ### $$\underbrace{\underbrace{\text{LOC}(V[4+1])}_{\text{LOC}(\text{9})}}_{\text{0x1028}} \not = \underbrace{\underbrace{\text{LOC}(V[4])}_{\text{LOC}(3)}}_{\text{0x101C}}+\text{0x0004}$$
 
-Como $\text{0x101C}+\text{0x0004}\not =\text{0x1028}$, isso implica que o array **não está** armazenado de forma sequencial! 
+Como `0x101C` $+$ `0x0004` $\not =$ `0x1028$`, isso implica que o array **não está** armazenado de forma sequencial! 
 
 ### Vetor Dinamico: LISTA.
 
-Um vetor dinamico (que vamos chamar apenas de lista daqui em diante) é aquele que é dinamico na memória, de forma que podemos alterar seu tamanho após sua inicialização.
+Um vetor dinamico (que vamos chamar apenas de lista daqui em diante) é aquele que é dinamico na memória. Isso implica que a lista cresce ou diminui dinamicamente à medida que os elementos são adicionados ou removidos.
+
+O funcionamento de uma lista usa internamente um array, mas como podemos ser dinamicos usando do estatico? A resposta está na estretegia do funcionamento da lista, a chamada Resizable Array.
+
+A lista inicial terá uma aparencia comum, da mesma forma de um vetor generico, porém na memória será um tanto diferente, porém internamente como a lista usa array, a forma como estará na memória será de forma sequencial, porém a lista terá uma capacidade acima da nescessaria, por exemplo, se a lista inicial tiver 10 elementos, internamente teremos um array com 10 elementos porém com a capacidade de suportar até 20 elementos, isso se lista usar como estrategia uma capacidade que será o dobro do seu tamanho, ou seja, usamos pré-alocação de espaço.
+
+diagrama aqui
+
+Mas, e se o número de elementos adicionados ultrapassar a capacidade pré-alocada? Nesse caso, a lista irá pré-alocars ainda mais espaço. O mesmo ocorre quando você remove elementos, reduzindo o tamanho conforme necessário.
+
+Mas isso não funciona magicamente. Infelizmente, não podemos simplesmente adicionar ou remover bytes da lista, como a lista usa internamente um array, e, como não é possível adicionar ou remover bytes diretamente no array, naturalmente não é possível fazer o mesmo com ArrayList.
+
+Então, como que a lista, mesmo com espaço pré-alocado, consegue adicionar mais espaço? A resposta está na "realocação" do array interno. Quando atinge a capacidade máxima, a lista cria um novo array interno com capacidade maior e, em seguida, copia os elementos do array antigo para o novo array.
+
+diagrama
+
+
+## colocar isso https://gulybyte.github.io/articles/estrutura-de-dados-java/list/array-list#vantagens-e-desvantagens
+
+
+## BIG O
+
+| Operation | ARRAY | LIST |
+| - | - | - |
+| **Access** | $\text{O}(1)$ | $\text{O}(1)$ |
+| **Search** | $\text{O}(n)$ | $\text{O}(n)$ |
+| **Insertion** | N/A | $\text{O}(n)$ |
+| **Deletion** | N/A | $\text{O}(n)$ |
+| **Appending** | N/A | $\text{O}(1)$ |
+
+Em cada operação abaixo, colocar um mini algoritmo em Lua para demonstração.
+
+#### Access
+explicar aqui o porque ele tem O de 1, que é por ser indexavel, então através do indice é rápido por ser sequencial na memória, assim aritmetica de ponteiro... bla bla
+
+#### Search
+Para ambos é $\text{O}(n)$, pois potencialmente teremos que percorrer todos os elementos até encontrar
+
+#### Insertion/Deletion
+A inserção e deleção não é póssivel no array, mas na lista sim, e é $\text{O}(n)$ pois no pior caso, onde a nova inserção vai passar do size atual do array, vamos ter que copiar todos os elementos do array (estrategia resizable array) um por um $n$ para um novo espaço de memória para ai sim poder inserir nesse novo, ou no caso da deleção será o caso que teremos que redimensionar o array para ficar menor, novamente copiando o elementos um a um $n$.
+
+(um diagrama aqui fica top)
+
+#### Appending
 
 
 
 
 
-
-
+# References:
+ - Knuth vol 1
+ - https://youtu.be/PEnFFiQe1pM
+ - https://youtu.be/tvw4v7FEF1w
 
 ### Estruturas Associadas
  - **Resizable Array**: Uma estrutura que permite comportamento de um lista (vetor dinâmico), mas que internamente usa um array (vetor estático). Exemplo: [em Java, a classe ArrayList que gerencia o redimensionamento automaticamente](https://gulybyte.github.io/articles/estrutura-de-dados-java). parece que vale a pena para manter O(1)
