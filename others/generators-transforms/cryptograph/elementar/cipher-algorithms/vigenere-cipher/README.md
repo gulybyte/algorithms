@@ -18,6 +18,3 @@ onde $C$ é o `cipherText`, $P$ é o `plainText`, $K$ é a `extendedKey` e $m$ �
 ### $$P = (C-K)(\text{mod } m)$$
 
 [algoritmo final](main.lua)
-
-# Referencias:
- - https://www.javatpoint.com/vigenere-cypher-program-in-c

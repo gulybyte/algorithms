@@ -1,8 +1,7 @@
-### AES, BCRYPT... Simetricas
-
-
 <!-- falar sobre porque não pode ser um simples gerador aleatorio a partir da seed, como hash, pois como visto nos geradores aleatorios, mesmo a seed seja algo como a data e hora, ainda assim o que será gerado será deterministico portanto possivelmente calculado para uma possivel reversão sabendo assim a seed ... sla, nem sei direito, vou ver conforme vou fazendo -->
+# Cryptography
 
+![](https://media.geeksforgeeks.org/wp-content/uploads/20240408171319/crptography.jpg)
 
 ## About Cryptography ([reference](https://www.geeksforgeeks.org/cryptography-introduction/?ref=lbp))
 
@@ -13,21 +12,31 @@
 ### Challenges of Cryptography
 While cryptography is a powerful tool for securing information, it also presents several challenges, including:
 
-Key management: Cryptography relies on the use of keys, which must be managed carefully to maintain the security of the communication.
-Quantum computing: The development of quantum computing poses a potential threat to current cryptographic algorithms, which may become vulnerable to attacks.
-Human error: Cryptography is only as strong as its weakest link, and human error can easily compromise the security of a communication.
+- Key management: Cryptography relies on the use of keys, which must be managed carefully to maintain the security of the communication.
+- Quantum computing: The development of quantum computing poses a potential threat to current cryptographic algorithms, which may become vulnerable to attacks.
+- Human error: Cryptography is only as strong as its weakest link, and human error can easily compromise the security of a communication.
 
-## Symetric
+### Cipher
 ![](https://media.geeksforgeeks.org/wp-content/uploads/20210224215653/fgfdgrfgrf21.png)
 
-Os mais básicos, onde se souber os parametros (secretKey) fácilmente com cyptanalysis ou brute force podemos quebra-los, os chamados algoritmos de cifra, mas nem por isso ele são ruins, pois servem de base para algoritmo mais atuais e robustos
+Os mais básicos, onde se souber os parametros (secretKey), ou com cyptanalysis fácilmente podemos quebra-los, os chamados algoritmos de cifra, mas nem por isso ele são ruins, pois servem de base para algoritmos mais atuais e robustos
  - [Ceaser or ROT13 Algorithm](elementar/cipher-algorithms/basic-cipher-algorithm-rot13-ceaser/)
  - [Vigenere Cipher](elementar/cipher-algorithms/vigenere-cipher/)
+ - [Hebern rotor machine](https://en.wikipedia.org/wiki/Hebern_rotor_machine)
+ - [The Enigma](https://pt.wikipedia.org/wiki/The_Enigma)
 
+## Symetric
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/20240409123909/Private-Key-Encryption-(1).png)
+
+Agora veremos algoritmos de criptografia que não são como os de cipher ou hash, ou seja, algoritmos onde `plainText` não gera o mesmo `cipherText` toda vez, sendo ótimo para evitar ataques de TABELA DE RESULTADOS.
+
+O algoritmo de criptografia simetrico popular atualmente, é o AES que nasceu do DES. Vamos falar o básico dele sem entrar muito nas suas versões mais atuais e robustas, mas esse básico é o suficiente para se ter noções de como funciona criptografia simetrica moderna (BCrypt, ARGON2...).
 
 
 ## Asymmetric
 
+![](https://media.geeksforgeeks.org/wp-content/uploads/20240621172845/Capture332.jpg)
 
 encriptar(texto)
 
@@ -35,5 +44,6 @@ encriptar(texto)
 # referencia
  - https://www.geeksforgeeks.org/cryptography-tutorial/?ref=lbp
  - https://hackingnaweb.com/criptografia/entendendo-algoritmo-rsa-de-verdade/
+ - https://youtu.be/CcU5Kc_FN_4
 
 <!-- - os 3 videos do akita sobre o assunto, e Knuth vol 2 -->
