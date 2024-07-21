@@ -20,6 +20,12 @@ Human error: Cryptography is only as strong as its weakest link, and human error
 ## Symetric
 ![](https://media.geeksforgeeks.org/wp-content/uploads/20210224215653/fgfdgrfgrf21.png)
 
+Os mais básicos, onde se souber os parametros (secretKey) fácilmente com cyptanalysis ou brute force podemos quebra-los, os chamados algoritmos de cifra, mas nem por isso ele são ruins, pois servem de base para algoritmo mais atuais e robustos
+ - [Ceaser or ROT13 Algorithm](elementar/cipher-algorithms/basic-cipher-algorithm-rot13-ceaser/)
+ - [Vigenere Cipher](elementar/cipher-algorithms/vigenere-cipher/)
+
+
+
 ## Asymmetric
 
 
