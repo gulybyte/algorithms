@@ -119,6 +119,7 @@ private:
                 current = current->prev;
             }
         }
+
         return current;
     }
 

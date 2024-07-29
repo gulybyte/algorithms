@@ -4,32 +4,55 @@
 
 #define MAX_LENGTH 20
 
-char* selectSort(int list[], int listSize, int value);
-char* intToString(int number);
+int* selectSort(int list[], int listSize);
+int findSmallIndex(int list[], int listSize);
+void printArray(int list[], int listSize);
 
 int main() {
 
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // Ordena e obtém o array ordenado
+    int* sortedArr = selectSort(arr, n);
+
+    printf("Array ordenado: \n");
+    printArray(sortedArr, n);
+
+    free(sortedArr); // Libera a memória alocada
 
     return 0;
 
 }
 
-char* selectSort() {
+int* selectSort(int list[], int listSize) {
+    int* newList = malloc(listSize * sizeof(int));;
+    for (int i = 0; i < listSize; i++) {
+        int smallIndex = findSmallIndex(list, listSize - i);
+        newList[i] = list[smallIndex];
+    }
 
-    
-
-    return "NOT FOUND";
+    return newList;
 }
 
+int findSmallIndex(int list[], int listSize) {
+    int small = list[0];
+    int smallIndex = 0;
 
-/* UTILS */
-
-char* intToString(int number) {
-    char* str = malloc(sizeof(char) * MAX_LENGTH);
-    if (str == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
+    for (int i = 1; i < listSize; i++) {
+        if(list[i] < small) {
+            small = list[i];
+            smallIndex = i;
+        }
     }
-    snprintf(str, MAX_LENGTH, "%d", number);
-    return str;
+
+    return smallIndex;
+}
+
+void printArray(int arr[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 }
