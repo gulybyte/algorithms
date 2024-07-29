@@ -107,9 +107,17 @@ private:
     }
 
     Node* node(int index) const {
-        Node* current = head;
-        for (int i = 0; i < index; ++i) {
-            current = current->next;
+        Node* current;
+        if (index <= size / 2) {
+            current = head;
+            for (int i = 0; i < index; ++i) {
+                current = current->next;
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i > index; --i) {
+                current = current->prev;
+            }
         }
         return current;
     }
