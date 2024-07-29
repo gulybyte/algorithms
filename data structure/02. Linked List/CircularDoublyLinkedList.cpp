@@ -20,7 +20,7 @@ private:
 
     void checkPositionIndex(int index) const {
         if (index < 0 || index > size) {
-            throw out_of_range("Índice fora dos limites");
+            throw out_of_range("Indice error");
         }
     }
 
@@ -71,6 +71,41 @@ private:
         size++;
     }
 
+    void unlink(Node* elementToDelete) {
+        if(size == 1) {
+            delete elementToDelete;
+            head = tail = nullptr;
+        } else {
+            Node* prevElement = elementToDelete->prev;
+            Node* nextElement = elementToDelete->next;
+            prevElement->next = nextElement;
+            nextElement->prev = prevElement;
+
+            if (elementToDelete == head) {
+                head = nextElement;
+            }
+            if (elementToDelete == tail) {
+                tail = prevElement;
+            }
+            delete elementToDelete;
+        }
+        size--;
+    }
+
+    int indexOf(int value) const {
+        Node* current = head;
+        int index = 0;
+        do {
+            if (current->data == value) {
+                return index;
+            }
+            current = current->next;
+            index++;
+        } while (current != head);
+
+        return -1;
+    }
+
     Node* node(int index) const {
         Node* current = head;
         for (int i = 0; i < index; ++i) {
@@ -109,9 +144,34 @@ public:
         linkLast(element);
     }
 
+    void deleteIndex(int index) {
+        checkPositionIndex(index);
+        unlink(node(index));
+    }
+
+    void deleteFirst() {
+        checkPositionIndex(0);
+        deleteIndex(0);
+    }
+
+    void deleteLast() {
+        checkPositionIndex(0);
+        deleteIndex(size - 1);
+    }
+
     int get(int index) const {
         checkPositionIndex(index);
         return node(index)->data;
+    }
+
+    int getFirst() const {
+        checkPositionIndex(0);
+        return head->data;
+    }
+
+    int getLast() const {
+        checkPositionIndex(size);
+        return tail->data;
     }
 
     vector<int> getAll() const {
@@ -125,6 +185,16 @@ public:
         } while (current != head);
 
         return elements;
+    }
+
+    int search(int value) const {
+        checkPositionIndex(0);
+        int response = indexOf(value);
+        if(response == -1) {
+            throw out_of_range("Element Not Found");
+        } else {
+            return response;
+        }
     }
 
     ~CircularDoublyLinkedList() {
@@ -175,6 +245,49 @@ int main() {
     cout << "Size: " << list.sizeList();
     cout << " ; " << assertEqualsInt(8, list.sizeList()) << endl;
 
+    cout << "First: " << list.getFirst() << " ; " << assertEqualsInt(30, list.getFirst()) << endl;
+    cout << "Last: " << list.getLast() << " ; " << assertEqualsInt(60, list.getLast()) << endl;
+    cout << "Index 4: " << list.get(4) << " ; " << assertEqualsInt(35, list.get(4)) << endl;
+
+
+    list.deleteIndex(4);
+
+    elements = list.getAll();
+    cout << "Delete Index 4: ";
+    for (int elem : elements) {
+        cout << elem << " ";
+    }
+    expectedElements = { 30, 20, 25, 10, 40, 50, 60 };
+    status = assertEqualsVectorInt(expectedElements, elements);
+    cout << "; " << status << endl;
+
+
+    list.deleteFirst();
+
+    elements = list.getAll();
+    cout << "Delete First: ";
+    for (int elem : elements) {
+        cout << elem << " ";
+    }
+    expectedElements = { 20, 25, 10, 40, 50, 60 };
+    status = assertEqualsVectorInt(expectedElements, elements);
+    cout << "; " << status << endl;
+
+
+    list.deleteLast();
+
+    elements = list.getAll();
+    cout << "Delete Last: ";
+    for (int elem : elements) {
+        cout << elem << " ";
+    }
+    expectedElements = { 20, 25, 10, 40, 50 };
+    status = assertEqualsVectorInt(expectedElements, elements);
+    cout << "; " << status << endl;
+
+    cout << "Search element 10: "<< list.search(10) << " ; " << assertEqualsInt(2, list.search(10)) << endl;
+
+    list.search(42);
 
     return 0;
 }
