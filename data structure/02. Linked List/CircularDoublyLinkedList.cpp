@@ -287,7 +287,7 @@ int main() {
 
     cout << "Search element 10: "<< list.search(10) << " ; " << assertEqualsInt(2, list.search(10)) << endl;
 
-    list.search(42);
+    //list.search(42); // NOT FOUND!
 
     return 0;
 }
