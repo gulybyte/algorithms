@@ -7,8 +7,8 @@ section .data
 	msgEnd 		db 	LF,'Program finished', LF, NULL
 	numVal1 	db 	LF,'Value 1: ', NULL
 	numVal2 	db 	LF,'Value 2: ', NULL
-	options 	db 	LF,'1. Addition',LF,'2. Subtraction',LF,'3. Multiplication',LF,'4. Division',LF,NULL
-	max_val_num	equ 0x5 ; 4 digit
+	options 	db 	LF,'1. Addition',LF,'2. Subtraction',LF,'3. Multiplication',LF,'4. Division',LF,'5. Factorial',LF,NULL
+	max_val_num	equ 0x6 ; 5 digit
 
 section .bss
 	optionCalc 		resb 1
@@ -56,7 +56,7 @@ get_input_option_as_int:
 		sub 	ah, 	'0'
 		ret
 	valid_size_option:
-		cmp 	ah, 	4
+		cmp 	ah, 	5
 		jg 		validation_error
 		cmp 	ah, 	1
 		jl 		validation_error
