@@ -154,11 +154,15 @@ diagrama
 
 | Operation | ARRAY | LIST |
 | - | - | - |
-| **Access** | $\text{O}(1)$ | $\text{O}(1)$ |
+| **Access (indexing)** | $\text{O}(1)$ | $\text{O}(1)$ |
 | **Search** | $\text{O}(n)$ | $\text{O}(n)$ |
-| **Insertion** | N/A | $\text{O}(n)$ |
-| **Deletion** | N/A | $\text{O}(n)$ |
-| **Appending** | N/A | $\text{O}(1)$ |
+| **Insertion (end)** | N/A | $\text{O}(1)$ (amortized) |
+| **Insertion (specific)** | N/A | $\text{O}(n)$ |
+| **Deletion (end)** | N/A | $\text{O}(1)$ |
+| **Deletion (specific)** | N/A | $\text{O}(1)$ (amortized) |
+| **Resizing** | N/A | $\text{O}(n)$ |
+
+amortizado é quando não será necessario fazer resize.
 
 Em cada operação abaixo, colocar um mini algoritmo em Lua para demonstração.
 
